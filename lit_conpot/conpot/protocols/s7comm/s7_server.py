@@ -43,6 +43,7 @@ def cleanse_byte_string(packet):
 @conpot_protocol
 class S7Server(object):
     def __init__(self, template, template_directory, args):
+
         self.timeout = 5
         self.ssl_lists = {}
         self.server = None
@@ -85,6 +86,7 @@ class S7Server(object):
 
         try:
             while True:
+
                 data = sock.recv(4, socket.MSG_WAITALL)
                 if len(data) == 0:
                     session.add_event({"type": "CONNECTION_LOST"})
@@ -101,6 +103,7 @@ class S7Server(object):
                 tpkt_packet = TPKT().parse(cleanse_byte_string(data))
                 cotp_base_packet = COTP_BASE_packet().parse(tpkt_packet.payload)
                 if cotp_base_packet.tpdu_type == 0xE0:
+
                     # connection request
                     cotp_cr_request = COTP_ConnectionRequest().dissect(
                         cotp_base_packet.payload
@@ -171,8 +174,10 @@ class S7Server(object):
 
                         # request pdu
                         if S7_packet.pdu_type == 1:
+
                             # 0xf0 == Request for connect / pdu negotiate
                             if S7_packet.param == 0xF0:
+
                                 # create S7 response packet
                                 s7_resp_negotiate_packet = S7(
                                     3, 0, S7_packet.request_id, 0, S7_packet.parameters

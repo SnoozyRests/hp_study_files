@@ -26,6 +26,7 @@ logger = logging.getLogger(__name__)
 
 
 class Decoder382(object):
+
     REGISTERS = {
         0x01: "Energy in",
         0x02: "Energy out",

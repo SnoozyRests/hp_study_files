@@ -1,7 +1,7 @@
 gevent>=1.0
 pysnmp
 pysnmp-mibs
-pysmi
+pysmi==0.3.4
 lxml
 requests
 sphinx

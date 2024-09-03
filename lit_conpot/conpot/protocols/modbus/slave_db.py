@@ -18,6 +18,7 @@ logger = logging.getLogger(__name__)
 
 
 class SlaveBase(Databank):
+
     """
     Database keeping track of the slaves.
     """

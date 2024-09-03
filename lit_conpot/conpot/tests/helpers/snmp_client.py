@@ -8,6 +8,7 @@ from pysnmp.entity.rfc3413 import cmdgen
 
 class SNMPClient(object):
     def __init__(self, host, port):
+
         # Create SNMP engine instance
         self.snmpEngine = engine.SnmpEngine()
 

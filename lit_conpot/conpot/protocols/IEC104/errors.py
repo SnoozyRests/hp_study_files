@@ -17,6 +17,7 @@
 
 
 class InvalidFieldValueException(ValueError):
+
     """This error is raised if a field value is not allowed"""
 
     def __init__(self, *args):
@@ -24,6 +25,7 @@ class InvalidFieldValueException(ValueError):
 
 
 class FrameError(Exception):
+
     """This error is raised if the IEC104 frame is wrong or ain't a IEC104 packet at all"""
 
     def __init__(self, *args):

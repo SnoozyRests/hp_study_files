@@ -1,3 +1,4 @@
+
 FROM python:3.8 AS conpot-builder
 
 RUN apt-get update && apt-get install -y \
@@ -33,4 +34,4 @@ USER conpot
 WORKDIR /home/conpot
 ENV USER=conpot
 ENTRYPOINT ["/home/conpot/.local/bin/conpot"]
-CMD ["--template", "default", "--logfile", "/var/log/conpot/conpot.log", "-f", "--temp_dir", "/tmp" ]
+CMD ["--template", "default", "--logfile", "/var/log/conpot/lit_conpot.log", "-f", "--temp_dir", "/tmp" ]
