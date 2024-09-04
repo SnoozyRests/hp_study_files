@@ -16,7 +16,7 @@ services:
       - lit_dumplog:/etc/data
     depends_on:
       - conpot
-    command: tcpdump -i eth0 -w /etc/data/lit_conpot.pcap
+    command: tcpdump -i eth0 -w /etc/data/conpot.pcap
     network_mode: service:conpot
 volumes:
   lit_dumplog:

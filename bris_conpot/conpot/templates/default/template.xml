@@ -11,13 +11,13 @@
         <!-- Core value that can be retrieved from the databus by key -->
         <key_value_mappings>
             <key name="FacilityName">
-                <value type="value">"Mouser Factory"</value>
+                <value type="value">"Bristol Water Treatment"</value>
             </key>
             <key name="SystemName">
-                <value type="value">"Technodrome"</value>
+                <value type="value">"BWT_PLC_MAIN"</value>
             </key>
             <key name="SystemDescription">
-                <value type="value">"Siemens, SIMATIC, S7-200"</value>
+                <value type="value">"Siemens S7-1200"</value>
             </key>
             <key name="Uptime">
                 <value type="function">conpot.emulators.misc.uptime.Uptime</value>
@@ -29,19 +29,19 @@
                 <value type="value">"Siemens AG"</value>
             </key>
             <key name="sysName">
-                <value type="value">"CP 443-1 EX40"</value>
+                <value type="value">"6ES7 215-1HG40-0XB0"</value>
 	    </key>
 	    <key name="module">
-      		<value type="value">"6eS7 212-1BD30-xXB0"</value>
+      		<value type="value">"6ES7 215-1HG40-0XB0"</value>
 	    </key>
 	    <key name="hardware">
-      		<value type="value">"6eS7 212-1BD30-xXB0"</value>
+      		<value type="value">"6ES7 215-1HG40-0XB0"</value>
 	    </key>
             <key name="firmware">
       		<value type="value">"3.2.6"</value>
 	    </key>
             <key name="sysLocation">
-                <value type="value">"Venus"</value>
+                <value type="value">"Level 2, Rack 3"</value>
             </key>
             <key name="sysServices">
                 <value type="value">"72"</value>
@@ -74,10 +74,10 @@
                 <value type="value">"Original Siemens Equipment"</value>
             </key>
             <key name="s7_id">
-                <value type="value">"88111222"</value>
+                <value type="value">"90116856"</value>
             </key>
             <key name="s7_module_type">
-                <value type="value">"IM151-8 PN/DP CPU"</value>
+                <value type="value">"6ES7 215-1HG40-0XB0"</value>
             </key>
             <key name="empty">
                 <value type="value">""</value>

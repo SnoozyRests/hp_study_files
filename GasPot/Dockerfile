@@ -11,7 +11,8 @@ WORKDIR /veeder
 
 # Create a log directory and set permissions
 RUN chown veeder:veeder /veeder
-
+RUN mkdir -p /var/log \
+	&& chown veeder:veeder /var/log
 # Expose the port on which GasPot will listen
 EXPOSE 10001
 
@@ -23,7 +24,6 @@ COPY GasPot.py /veeder/GasPot.py
 USER veeder
 
 # Define the entry point for the container
-ENTRYPOINT ["nohup", "python3", "GasPot.py"]
-
+CMD ["/bin/sh","-c", "python3 -u GasPot.py >> /var/log/gas.log"]
 # Add a health check
 HEALTHCHECK --interval=30s --timeout=10s --retries=3 CMD nc -z localhost 10001

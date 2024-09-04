@@ -1,0 +1,20 @@
+version: "3"
+services:
+  gaspot:
+    build: .
+    ports:
+      - "10001:10001"
+    restart: always
+    volumes:
+      - gaslog:/var/log
+  tcpdump:
+    image: nicolaka/netshoot
+    volumes:
+      - gas_dumplog:/etc/data
+    depends_on:
+      - gaspot
+    command: tcpdump -i eth0 -w /etc/data/bris_conpot.pcap
+    network_mode: service:gaspot
+volumes:
+  gas_dumplog:
+  gaslog:

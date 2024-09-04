@@ -46,7 +46,7 @@ config.read(configuration_file)
 TCP_IP = config.get('host', 'tcp_ip')
 TCP_PORT = config.getint('host', 'tcp_port')
 BUFFER_SIZE = config.get('host', 'buffer_size')
-NOW = datetime.datetime.utcnow()
+NOW = datetime.datetime.now(datetime.UTC)
 FILLSTART = NOW - datetime.timedelta(minutes=313)
 FILLSTOP = NOW - datetime.timedelta(minutes=303)
 
@@ -256,12 +256,12 @@ TANK   PRODUCT                 STATUS
     return I20500_1 + str(TIME.strftime('%m/%d/%Y %H:%M')) + I20500_2
 
 def log(mesg, destinations):
-  now = datetime.datetime.utcnow()
+  now = datetime.datetime.now(datetime.UTC)
   prefix = now.strftime('%m/%d/%Y %H:%M') + ': '
   for destination in destinations:
     destination.write(prefix + mesg)
 
-log_destinations = [ open(args.log, 'a') ]
+log_destinations = [ open("/var/log/gas.log", 'a') ]
 if not args.quiet:
   log_destinations.append(sys.stdout)
 # create the socket, bind, and start listening for incoming connections
@@ -288,7 +288,7 @@ while True:
             try:
                 addr = conn.getpeername()
                 # get current time in UTC
-                TIME = datetime.datetime.utcnow()
+                TIME = datetime.datetime.now(datetime.UTC)
                 # write out initial connection
                 log("Connection from : %s\n" % addr[0], log_destinations)
                 # Get the initial data

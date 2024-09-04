@@ -47,7 +47,6 @@ class SNMPDispatcher(DatagramServer):
 
 class CommandResponder(object):
     def __init__(self, host, port, raw_mibs, compiled_mibs):
-
         self.oid_mapping = {}
         self.databus_mediator = DatabusMediator(self.oid_mapping)
         # mapping between OID and databus keys
@@ -173,10 +172,10 @@ class CommandResponder(object):
         if s:
             self.oid_mapping[s.name + instance] = profile_map_name
 
-            (
-                MibScalarInstance,
-            ) = self.snmpEngine.msgAndPduDsp.mibInstrumController.mibBuilder.importSymbols(
-                "SNMPv2-SMI", "MibScalarInstance"
+            (MibScalarInstance,) = (
+                self.snmpEngine.msgAndPduDsp.mibInstrumController.mibBuilder.importSymbols(
+                    "SNMPv2-SMI", "MibScalarInstance"
+                )
             )
             x = MibScalarInstance(s.name, instance, s.syntax.clone(value))
             self.snmpEngine.msgAndPduDsp.mibInstrumController.mibBuilder.exportSymbols(
