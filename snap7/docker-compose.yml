@@ -1,0 +1,20 @@
+version: "3"
+services:
+  snap7:
+    build: ./
+    ports:
+      - "102:10201" #S7Comm
+    restart: always
+    volumes:
+      - snaplog:/home/snap7
+  tcpdump:
+    image: nicolaka/netshoot
+    volumes:
+      - tcpsnap:/etc/data
+    depends_on:
+      - snap7
+    command: tcpdump -i eth0 -w /etc/data/snap7.pcap
+    network_mode: service:snap7
+volumes:
+  tcpsnap:
+  snaplog:

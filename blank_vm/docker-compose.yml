@@ -1,7 +1,7 @@
 version: "3"
 services:
-  conpot:
-    build: ./
+  tcpdump:
+    image: nicolaka/netshoot
     ports:
       - "80:8800" #SCADA UI, http
       - "102:10201" #S7Comm
@@ -12,17 +12,19 @@ services:
       - "21:2121" #FTP
       - "69:6969/udp" #TFTP
       - "44818:44818" #EN/IP
+    expose:
+        - "8800"
+        - "10201"
+        - "5020"
+        - "16100"
+        - "47808"
+        - "6230"
+        - "2121"
+        - "6969"
+        - "44818"
     restart: always
     volumes:
-      - conlog:/var/log/conpot/
-  tcpdump:
-    image: nicolaka/netshoot
-    volumes:
-      - dumplog:/etc/data
-    depends_on:
-      - conpot
-    command: tcpdump -i eth0 -w /etc/data/conpot.pcap
-    network_mode: service:conpot
+      - blanklog:/etc/data
+    command: tcpdump -i eth0 -w /etc/data/blankvm.pcap
 volumes:
-  dumplog:
-  conlog:
+  blanklog:
